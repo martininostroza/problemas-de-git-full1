@@ -22,4 +22,9 @@ public class BibliotecaService {
     public List<BibliotecaModel> obtenerBibliotecaDelUsuario(Integer usuarioId) {
         return repository.findByUsuarioId(usuarioId);
     }
+
+    // Devuelve absolutamente todos los registros de la tabla, sin importar el usuario
+    public List<BibliotecaModel> obtenerTodoGlobal() {
+    return repository.findAll();
+}
 }
