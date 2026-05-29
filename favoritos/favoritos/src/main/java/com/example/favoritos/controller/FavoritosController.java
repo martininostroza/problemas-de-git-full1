@@ -8,6 +8,15 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import java.util.List;
 
+
+
+
+//URL: http://localhost:8085/favoritos/agregar
+//{
+     //  "idUsuario": 1,
+     //  "idJuego": 2
+//   }
+
 @RestController
 @RequestMapping("/favoritos")
 public class FavoritosController {
