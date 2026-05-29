@@ -16,7 +16,7 @@ public class ResenaService {
 
     public Resena guardarResena(Resena resena) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8080/catalogo/buscar-id/" + resena.getIdJuego();
+        String url = "http://localhost:8081/catalogo/buscar-id/" + resena.getIdJuego();
 
         Object juego = restTemplate.getForObject(url, Object.class);
 
