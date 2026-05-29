@@ -19,7 +19,7 @@ public class FavoritosService {
     // Consulta por HTTP al catálogo para verificar la existencia del juego antes de agregarlo a la lista de favoritos
     public JuegoFavorito agregarAFavoritos(JuegoFavorito favorito) {
         RestTemplate restTemplate = new RestTemplate();
-        String url = "http://localhost:8080/catalogo/buscar-id/" + favorito.getIdJuego();
+        String url = "http://localhost:8081/catalogo/buscar-id/" + favorito.getIdJuego();
         
         DatosJuegoCatalogo juego = restTemplate.getForObject(url, DatosJuegoCatalogo.class);
         
