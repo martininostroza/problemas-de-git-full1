@@ -8,8 +8,13 @@ import com.example.biblioteca.model.BibliotecaModel;
 import com.example.biblioteca.service.BibliotecaService;
 import java.util.List;
 
-// El CONTROLADOR expone los endpoints en el puerto 8087.
-// Solo permite registrar (POST) y listar (GET). No permite modificaciones (PUT).
+//http://localhost:8087/biblioteca
+// {
+    //     "usuarioId": 1,
+    //     "titulo": "Minecraft"
+    // }
+
+
 @RestController
 @RequestMapping("/biblioteca")
 public class BibliotecaController {
@@ -21,12 +26,17 @@ public class BibliotecaController {
     @PostMapping("/agregar")
     public ResponseEntity<BibliotecaModel> agregarJuego(@Valid @RequestBody BibliotecaModel registro) {
         BibliotecaModel nuevoRegistro = service.agregarALaBiblioteca(registro);
-        
-        // NOTA: Aquí es donde idealmente se llamaría al microservicio de Notificaciones
-        // ejemplo: feignClient.enviarNotificacion(registro.getUsuarioId(), "¡Nuevo juego añadido!");
-        
         return ResponseEntity.status(201).body(nuevoRegistro);
     }
+
+
+    // Endpoint para ver el contenido global de la tabla
+      @GetMapping("/todo")
+      public ResponseEntity<List<BibliotecaModel>> listarTodo() {
+      List<BibliotecaModel> lista = service.obtenerTodoGlobal();
+      return ResponseEntity.ok(lista);
+      }
+
 
     // Endpoint para consultar los juegos de un usuario
     @GetMapping("/usuario/{usuarioId}")
